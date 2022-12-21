@@ -6,17 +6,12 @@ import { AuthContext } from '../../context/Authcontext';
 
 const Myappoiment = () => {
     const {user } = useContext(AuthContext);
-
     const url = `https://doctors-protal-server-eight.vercel.app/bookings?email=${user?.email}`;
 
     const {data: bookings = []} = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async ()=> {
-            const res = await fetch(url,{
-              headers: {
-                'authrazation': `bearer ${localStorage.getItem('token')}`
-              }
-            })
+            const res = await fetch(url)
             const data = await res.json()
             return data;
         }

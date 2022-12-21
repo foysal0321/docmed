@@ -1,11 +1,13 @@
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/Authcontext';
 
 const Modal = ({modal, selected, setmodal, refetch}) => {
     const {user} = useContext(AuthContext)
     const {name, slots, _id, price} = modal
     const date = format(selected, 'PP');
+    const naviget  = useNavigate()
 
     const handleBooking=(e)=>{
         e.preventDefault()
@@ -65,8 +67,9 @@ const Modal = ({modal, selected, setmodal, refetch}) => {
                 <input name='name' readOnly defaultValue={user?.displayName} type="text" placeholder="Your name" className="input input-bordered w-full " />
                 <input name='email' readOnly value={user?.email} type="email" placeholder="Your email" className="input input-bordered w-full " />
                 {/* <input name='price' readOnly value={`$${price}`} type="text" className="input input-bordered w-full " /> */}
-                <input name='phone' type="number" placeholder="Your phone" className="input input-bordered w-full " /> 
-                <input type="submit" value="Submit" className=' w-full btn btn-accent'/>
+                <input name='phone' type="number" placeholder="Your phone" className="input input-bordered w-full " />                   
+                         <input type="submit" value="Submit" className=' w-full btn btn-accent'/>                                  
+
                 </form>
             </div>
             </div>

@@ -15,15 +15,16 @@ const Login = () => {
     const [logEmail,setLogemail] = useState('')
     const [token] = UseToken(logEmail)
 
-    if(token){
-        navigate(from, {replace: true})
-    }
+    // if(token){
+    //     navigate(from, {replace: true})
+    // }
 
     const handleLogin = (data)=>{
         setlogerr('')
         signUser(data.email, data.password)
         .then(result=>{
             const user = result.user;
+            navigate(from, {replace: true})
             //console.log(user);
             setLogemail(data.email)
         })

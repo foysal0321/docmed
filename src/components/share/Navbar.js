@@ -14,7 +14,7 @@ const Navbar = () => {
     const menuitems= <>
         <li><Link to='/'>Home</Link></li>      
         <li><Link to='/apporment'>Apporment</Link></li>
-        <li><Link>About</Link></li>
+        {/* <li><Link>About</Link></li> */}
         {
           user?.email ? 
           <>
@@ -35,7 +35,7 @@ const Navbar = () => {
         {menuitems}
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">Docmed</a>
+   <Link to='/'><a className="btn btn-ghost normal-case text-3xl font-bold">Docmed</a> </Link> 
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">

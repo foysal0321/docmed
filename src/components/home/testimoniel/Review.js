@@ -9,7 +9,7 @@ const Review = ({revieww}) => {
     <div className="flex mt-6">
         <div>
       <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-        <img src={img} />
+        <img className='rounded-full w-16 h-16 ' src={img} />
       </div>
       </div>  
      <div className="mx-6">

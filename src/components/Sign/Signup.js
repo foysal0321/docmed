@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/Authcontext';
 import UseToken from '../../hooks/UseToken';
 
@@ -9,12 +9,14 @@ const Signup = () => {
     const { register, formState:{errors}, handleSubmit } = useForm();
     const [data, setData] = useState("");
      const navigate = useNavigate()
+     const location = useLocation();
+     const from = location.state?.from?.pathname || '/'
     const [createEmail,setemail] = useState('')
    const [token] = UseToken(createEmail);
    
-   if(token){
-    navigate('/')
-   }
+//    if(token){
+//     navigate('/')
+//    }
 
     const handleSignup = (data)=>{
         crateUser(data.email,data.password)
@@ -27,7 +29,7 @@ const Signup = () => {
             updateUser(profile)
             .then(()=>{
                 saveUser(data.name, data.email)
-           
+                navigate(from, {replace: true})
             })
             .catch(err=> {
                 console.error(err);
